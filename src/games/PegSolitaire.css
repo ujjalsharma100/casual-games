@@ -1,0 +1,82 @@
+.peg-board {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 20px;
+  background: linear-gradient(145deg, #8b4513, #a0522d);
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.peg-row {
+  display: flex;
+  gap: 4px;
+}
+
+.peg-cell {
+  width: 45px;
+  height: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: all 0.2s ease;
+}
+
+.peg-cell.invalid {
+  background: transparent;
+}
+
+.peg-cell.hole {
+  background: radial-gradient(circle at 30% 30%, #4a3728, #2d1f14);
+  box-shadow: inset 0 4px 8px rgba(0, 0, 0, 0.5);
+  cursor: pointer;
+}
+
+.peg-cell.hole:hover {
+  transform: scale(1.05);
+}
+
+.peg-cell.selected {
+  box-shadow: inset 0 4px 8px rgba(0, 0, 0, 0.5), 0 0 0 3px #ffd700;
+}
+
+.peg-cell.valid-move {
+  background: radial-gradient(circle at 30% 30%, #4a5d4a, #2d3d2d);
+  box-shadow: inset 0 4px 8px rgba(0, 0, 0, 0.5), 0 0 0 3px #4ade80;
+  animation: pulse 1s ease-in-out infinite;
+}
+
+.peg {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 30%, #e8d4a8, #c9a55a, #8b6914);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+}
+
+.peg-cell.selected .peg {
+  background: radial-gradient(circle at 30% 30%, #fff8dc, #ffd700, #daa520);
+}
+
+/* Mobile responsive */
+@media (max-width: 480px) {
+  .peg-board {
+    gap: 3px;
+    padding: 12px;
+  }
+
+  .peg-row {
+    gap: 3px;
+  }
+
+  .peg-cell {
+    width: 38px;
+    height: 38px;
+  }
+
+  .peg {
+    width: 26px;
+    height: 26px;
+  }
+}

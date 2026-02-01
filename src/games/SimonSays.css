@@ -1,0 +1,112 @@
+.simon-scores {
+  display: flex;
+  gap: 30px;
+  margin-bottom: 20px;
+}
+
+.simon-score {
+  font-size: 1.2rem;
+  color: #ccc;
+}
+
+.simon-board {
+  position: relative;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  background: #1a1a2e;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+  overflow: hidden;
+}
+
+.simon-btn {
+  position: absolute;
+  width: 140px;
+  height: 140px;
+  cursor: pointer;
+  transition: all 0.1s ease;
+  opacity: 0.7;
+}
+
+.simon-btn:hover {
+  opacity: 0.85;
+}
+
+.simon-btn.active {
+  opacity: 1;
+  filter: brightness(1.5);
+}
+
+.simon-red {
+  top: 10px;
+  left: 10px;
+  background: #e74c3c;
+  border-radius: 100% 0 0 0;
+}
+
+.simon-green {
+  top: 10px;
+  right: 10px;
+  background: #2ecc71;
+  border-radius: 0 100% 0 0;
+}
+
+.simon-blue {
+  bottom: 10px;
+  left: 10px;
+  background: #3498db;
+  border-radius: 0 0 0 100%;
+}
+
+.simon-yellow {
+  bottom: 10px;
+  right: 10px;
+  background: #f1c40f;
+  border-radius: 0 0 100% 0;
+}
+
+.simon-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100px;
+  height: 100px;
+  background: #1a1a2e;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+}
+
+.simon-center p {
+  margin: 0;
+  font-size: 0.75rem;
+  color: #888;
+  padding: 10px;
+}
+
+/* Mobile responsive */
+@media (max-width: 380px) {
+  .simon-board {
+    width: 260px;
+    height: 260px;
+  }
+
+  .simon-btn {
+    width: 120px;
+    height: 120px;
+  }
+
+  .simon-center {
+    width: 80px;
+    height: 80px;
+  }
+
+  .simon-center p {
+    font-size: 0.65rem;
+    padding: 6px;
+  }
+}

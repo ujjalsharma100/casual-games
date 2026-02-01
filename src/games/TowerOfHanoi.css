@@ -1,0 +1,166 @@
+.hanoi-board {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  padding: 20px;
+  background: linear-gradient(145deg, #1a1a2e, #16213e);
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+}
+
+.hanoi-peg {
+  position: relative;
+  width: 160px;
+  height: 200px;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.hanoi-peg:hover {
+  transform: scale(1.02);
+}
+
+.hanoi-peg.selected {
+  transform: scale(1.05);
+}
+
+.hanoi-peg.selected .peg-rod {
+  background: #ffd700;
+  box-shadow: 0 0 15px rgba(255, 215, 0, 0.5);
+}
+
+.peg-base {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 150px;
+  height: 15px;
+  background: linear-gradient(145deg, #8b4513, #a0522d);
+  border-radius: 4px;
+}
+
+.peg-rod {
+  position: absolute;
+  bottom: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 12px;
+  height: 160px;
+  background: linear-gradient(90deg, #6b4423, #8b5a2b, #6b4423);
+  border-radius: 6px 6px 0 0;
+  transition: all 0.2s;
+}
+
+.disks-container {
+  position: absolute;
+  bottom: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
+}
+
+.disk {
+  height: 22px;
+  border-radius: 6px;
+  margin-top: 2px;
+  transition: all 0.15s;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
+}
+
+.disk.top-disk {
+  animation: bounce 0.5s ease infinite;
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+.difficulty-selector {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 15px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.diff-btn {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #fff;
+  padding: 8px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-size: 0.9rem;
+}
+
+.diff-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.diff-btn.active {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-color: transparent;
+}
+
+/* Mobile responsive */
+@media (max-width: 540px) {
+  .hanoi-board {
+    gap: 8px;
+    padding: 12px;
+  }
+
+  .hanoi-peg {
+    width: 100px;
+    height: 150px;
+  }
+
+  .peg-base {
+    width: 95px;
+    height: 12px;
+  }
+
+  .peg-rod {
+    width: 10px;
+    height: 120px;
+  }
+
+  .disk {
+    height: 18px;
+  }
+}
+
+@media (max-width: 380px) {
+  .hanoi-board {
+    gap: 4px;
+    padding: 8px;
+  }
+
+  .hanoi-peg {
+    width: 85px;
+    height: 130px;
+  }
+
+  .peg-base {
+    width: 80px;
+    height: 10px;
+  }
+
+  .peg-rod {
+    width: 8px;
+    height: 100px;
+  }
+
+  .disk {
+    height: 16px;
+  }
+
+  .diff-btn {
+    padding: 6px 10px;
+    font-size: 0.75rem;
+  }
+}

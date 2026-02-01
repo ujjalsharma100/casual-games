@@ -1,0 +1,55 @@
+.fifteen-board {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 6px;
+  padding: 12px;
+  background: linear-gradient(145deg, #34495e, #2c3e50);
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+}
+
+.fifteen-tile {
+  width: 70px;
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.8rem;
+  font-weight: bold;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  background: linear-gradient(145deg, #3498db, #2980b9);
+  color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  user-select: none;
+}
+
+.fifteen-tile.empty {
+  background: transparent;
+  box-shadow: none;
+  cursor: default;
+}
+
+.fifteen-tile.movable:not(.empty):hover {
+  transform: scale(1.05);
+  background: linear-gradient(145deg, #5dade2, #3498db);
+}
+
+.fifteen-tile:active:not(.empty) {
+  transform: scale(0.95);
+}
+
+/* Mobile responsive */
+@media (max-width: 400px) {
+  .fifteen-board {
+    gap: 4px;
+    padding: 8px;
+  }
+
+  .fifteen-tile {
+    width: 60px;
+    height: 60px;
+    font-size: 1.5rem;
+  }
+}
