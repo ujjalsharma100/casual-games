@@ -6,7 +6,7 @@
 
 .simon-score {
   font-size: 1.2rem;
-  color: #ccc;
+  color: var(--text-muted);
 }
 
 .simon-board {
@@ -84,7 +84,7 @@
 .simon-center p {
   margin: 0;
   font-size: 0.75rem;
-  color: #888;
+  color: #aaa;
   padding: 10px;
 }
 

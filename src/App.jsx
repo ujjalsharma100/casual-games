@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import './App.css'
 import PegSolitaire from './games/PegSolitaire'
 import LightsOut from './games/LightsOut'
@@ -96,11 +96,26 @@ const games = [
 
 function App() {
   const [currentGame, setCurrentGame] = useState(null)
+  const [theme, setTheme] = useState(() => {
+    const saved = localStorage.getItem('theme')
+    if (saved) return saved
+    return window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark'
+  })
+
+  useEffect(() => {
+    document.documentElement.setAttribute('data-theme', theme)
+    localStorage.setItem('theme', theme)
+  }, [theme])
+
+  const toggleTheme = () => setTheme(t => t === 'dark' ? 'light' : 'dark')
 
   if (currentGame) {
     const GameComponent = currentGame.component
     return (
       <div className="app">
+        <button className="theme-toggle" onClick={toggleTheme} aria-label="Toggle theme">
+          {theme === 'dark' ? '☀️' : '🌙'}
+        </button>
         <GameComponent onBack={() => setCurrentGame(null)} />
       </div>
     )
@@ -108,23 +123,33 @@ function App() {
 
   return (
     <div className="app">
+      <button className="theme-toggle" onClick={toggleTheme} aria-label="Toggle theme">
+        {theme === 'dark' ? '☀️' : '🌙'}
+      </button>
       <div className="home">
-        <h1>Casual Games</h1>
-        <p className="subtitle">Pick a game and challenge yourself!</p>
+        <div className="home-hero">
+          <div className="home-badge">🎮 10 Classic Games</div>
+          <h1>Casual Games</h1>
+          <p className="subtitle">Pick a game and challenge yourself!</p>
+        </div>
 
         <div className="games-grid">
-          {games.map(game => (
+          {games.map((game, index) => (
             <div
               key={game.id}
               className="game-card"
               onClick={() => setCurrentGame(game)}
+              style={{ animationDelay: `${index * 0.05}s` }}
             >
               <div className="icon">{game.icon}</div>
               <h3>{game.name}</h3>
               <p>{game.description}</p>
-              <span className={`difficulty ${game.difficulty}`}>
-                {game.difficulty === 'variable' ? 'Adjustable' : game.difficulty.charAt(0).toUpperCase() + game.difficulty.slice(1)}
-              </span>
+              <div className="card-footer">
+                <span className={`difficulty ${game.difficulty}`}>
+                  {game.difficulty === 'variable' ? 'Adjustable' : game.difficulty.charAt(0).toUpperCase() + game.difficulty.slice(1)}
+                </span>
+                <span className="play-arrow">→</span>
+              </div>
             </div>
           ))}
         </div>

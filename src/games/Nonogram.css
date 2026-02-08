@@ -29,7 +29,7 @@
 
 .clue-num {
   font-size: 0.85rem;
-  color: #ccc;
+  color: var(--panel-text-muted);
   height: 18px;
   display: flex;
   align-items: center;
@@ -88,18 +88,19 @@
 }
 
 .diff-btn {
-  background: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  color: #fff;
+  background: var(--btn-ghost-bg);
+  border: 1px solid var(--btn-ghost-border);
+  color: var(--btn-ghost-text);
   padding: 8px 16px;
   border-radius: 8px;
   cursor: pointer;
   transition: all 0.2s;
   font-size: 0.9rem;
+  font-family: 'Space Grotesk', sans-serif;
 }
 
 .diff-btn:hover {
-  background: rgba(255, 255, 255, 0.2);
+  background: var(--btn-ghost-hover);
 }
 
 .diff-btn.active {
@@ -108,23 +109,24 @@
 }
 
 .help-toggle {
-  background: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  color: #fff;
+  background: var(--btn-ghost-bg);
+  border: 1px solid var(--btn-ghost-border);
+  color: var(--btn-ghost-text);
   padding: 8px 20px;
   border-radius: 8px;
   cursor: pointer;
   margin-bottom: 15px;
   font-size: 0.9rem;
+  font-family: 'Space Grotesk', sans-serif;
 }
 
 .help-toggle:hover {
-  background: rgba(255, 255, 255, 0.2);
+  background: var(--btn-ghost-hover);
 }
 
 .nonogram-help {
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: var(--panel-bg);
+  border: 1px solid var(--panel-border);
   border-radius: 12px;
   padding: 20px;
   margin-bottom: 20px;
@@ -134,12 +136,12 @@
 
 .nonogram-help h3 {
   margin: 0 0 12px 0;
-  color: #fff;
+  color: var(--panel-text);
   font-size: 1.1rem;
 }
 
 .nonogram-help p {
-  color: #ccc;
+  color: var(--panel-text-muted);
   margin: 0 0 15px 0;
   font-size: 0.9rem;
   line-height: 1.5;
@@ -153,7 +155,7 @@
 }
 
 .example-label {
-  color: #888;
+  color: var(--panel-text-dim);
   font-size: 0.85rem;
   margin-bottom: 8px;
 }
@@ -187,7 +189,7 @@
 }
 
 .example-explain {
-  color: #888;
+  color: var(--panel-text-dim);
   font-size: 0.8rem;
   margin-top: 6px;
   font-style: italic;
@@ -207,25 +209,26 @@
   margin-bottom: 15px;
   border-radius: 8px;
   overflow: hidden;
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid var(--btn-ghost-border);
 }
 
 .mode-btn {
-  background: rgba(255, 255, 255, 0.1);
+  background: var(--btn-ghost-bg);
   border: none;
-  color: #fff;
+  color: var(--btn-ghost-text);
   padding: 10px 24px;
   cursor: pointer;
   font-size: 0.95rem;
   transition: all 0.2s;
+  font-family: 'Space Grotesk', sans-serif;
 }
 
 .mode-btn:first-child {
-  border-right: 1px solid rgba(255, 255, 255, 0.2);
+  border-right: 1px solid var(--btn-ghost-border);
 }
 
 .mode-btn:hover {
-  background: rgba(255, 255, 255, 0.2);
+  background: var(--btn-ghost-hover);
 }
 
 .mode-btn.active {

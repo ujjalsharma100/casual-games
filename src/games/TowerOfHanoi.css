@@ -88,18 +88,19 @@
 }
 
 .diff-btn {
-  background: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  color: #fff;
+  background: var(--btn-ghost-bg);
+  border: 1px solid var(--btn-ghost-border);
+  color: var(--btn-ghost-text);
   padding: 8px 16px;
   border-radius: 8px;
   cursor: pointer;
   transition: all 0.2s;
   font-size: 0.9rem;
+  font-family: 'Space Grotesk', sans-serif;
 }
 
 .diff-btn:hover {
-  background: rgba(255, 255, 255, 0.2);
+  background: var(--btn-ghost-hover);
 }
 
 .diff-btn.active {

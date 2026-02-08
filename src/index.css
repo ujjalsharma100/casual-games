@@ -1,7 +1,67 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+
+:root, [data-theme="dark"] {
+  --bg: #0c0b18;
+  --card-bg: rgba(255, 255, 255, 0.032);
+  --border: rgba(255, 255, 255, 0.07);
+  --text: #ede9f8;
+  --text-muted: rgba(237, 233, 248, 0.45);
+  --accent: #7c6ff7;
+  --accent-dim: rgba(124, 111, 247, 0.13);
+  --accent-glow: rgba(124, 111, 247, 0.2);
+  --accent2: #e8b84b;
+  --accent2-dim: rgba(232, 184, 75, 0.12);
+  --accent2-glow: rgba(232, 184, 75, 0.18);
+  --dot-color: rgba(255, 255, 255, 0.035);
+  --blob1: rgba(124, 111, 247, 0.2);
+  --blob2: rgba(232, 184, 75, 0.12);
+  --modal-bg: rgba(10, 9, 20, 0.93);
+  --modal-border: rgba(124, 111, 247, 0.22);
+  --btn-ghost-bg: rgba(255, 255, 255, 0.1);
+  --btn-ghost-border: rgba(255, 255, 255, 0.2);
+  --btn-ghost-text: #fff;
+  --btn-ghost-hover: rgba(255, 255, 255, 0.2);
+  --panel-bg: rgba(255, 255, 255, 0.05);
+  --panel-border: rgba(255, 255, 255, 0.1);
+  --panel-text: #fff;
+  --panel-text-muted: #ccc;
+  --panel-text-dim: #888;
+}
+
+[data-theme="light"] {
+  --bg: #f2f0fa;
+  --card-bg: rgba(255, 255, 255, 0.92);
+  --border: rgba(20, 15, 40, 0.15);
+  --text: #0f0e1a;
+  --text-muted: rgba(26, 24, 40, 0.65);
+  --accent: #4338c9;
+  --accent-dim: rgba(67, 56, 201, 0.14);
+  --accent-glow: rgba(67, 56, 201, 0.24);
+  --accent2: #9e6710;
+  --accent2-dim: rgba(158, 103, 16, 0.14);
+  --accent2-glow: rgba(158, 103, 16, 0.22);
+  --dot-color: rgba(0, 0, 0, 0.07);
+  --blob1: rgba(67, 56, 201, 0.12);
+  --blob2: rgba(158, 103, 16, 0.1);
+  --modal-bg: rgba(242, 240, 250, 0.98);
+  --modal-border: rgba(67, 56, 201, 0.25);
+  --btn-ghost-bg: rgba(0, 0, 0, 0.06);
+  --btn-ghost-border: rgba(0, 0, 0, 0.14);
+  --btn-ghost-text: #0f0e1a;
+  --btn-ghost-hover: rgba(0, 0, 0, 0.1);
+  --panel-bg: rgba(0, 0, 0, 0.04);
+  --panel-border: rgba(0, 0, 0, 0.1);
+  --panel-text: #0f0e1a;
+  --panel-text-muted: #555;
+  --panel-text-dim: #777;
+}
+
 :root {
-  font-family: 'Segoe UI', system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: 'Space Grotesk', sans-serif;
   line-height: 1.5;
   font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 * {
@@ -11,11 +71,60 @@
 body {
   margin: 0;
   min-height: 100vh;
-  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
-  color: #fff;
+  background-color: var(--bg);
+  background-image: radial-gradient(circle, var(--dot-color) 1px, transparent 1px);
+  background-size: 32px 32px;
+  color: var(--text);
+  overflow-x: hidden;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  top: -100px;
+  right: -100px;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, var(--blob1) 0%, transparent 70%);
+  filter: blur(120px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+body::after {
+  content: '';
+  position: fixed;
+  bottom: -100px;
+  left: -100px;
+  width: 350px;
+  height: 350px;
+  background: radial-gradient(circle, var(--blob2) 0%, transparent 70%);
+  filter: blur(100px);
+  pointer-events: none;
+  z-index: 0;
 }
 
 #root {
   width: 100%;
   min-height: 100vh;
+  position: relative;
+  z-index: 1;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--accent);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent2);
 }

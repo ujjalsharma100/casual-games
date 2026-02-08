@@ -87,15 +87,15 @@
   width: 50px;
   height: 50px;
   font-size: 1.4rem;
-  background: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  color: #fff;
+  background: var(--btn-ghost-bg);
+  border: 1px solid var(--btn-ghost-border);
+  color: var(--btn-ghost-text);
   border-radius: 10px;
   cursor: pointer;
 }
 
 .mobile-controls button:hover {
-  background: rgba(255, 255, 255, 0.2);
+  background: var(--btn-ghost-hover);
 }
 
 .mobile-controls button:active {
