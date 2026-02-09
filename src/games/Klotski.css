@@ -2,12 +2,17 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  --cell-size: 60px;
+  --gap: 4px;
 }
 
 .klotski-board {
   position: relative;
-  width: 240px;
-  height: 300px;
+  display: grid;
+  grid-template-columns: repeat(4, var(--cell-size));
+  grid-template-rows: repeat(5, var(--cell-size));
+  gap: var(--gap);
+  padding: var(--gap);
   background: #1a1a2e;
   border: 4px solid #4a4a6a;
   border-radius: 12px;
@@ -15,13 +20,15 @@
 }
 
 .klotski-row {
-  display: flex;
+  display: contents;
 }
 
 .klotski-cell {
-  width: 60px;
-  height: 60px;
+  width: var(--cell-size);
+  height: var(--cell-size);
+  background: rgba(42, 42, 62, 0.3);
   border: 1px solid #2a2a3e;
+  box-sizing: border-box;
 }
 
 .klotski-cell.exit {
@@ -31,10 +38,11 @@
 
 .klotski-block {
   position: absolute;
-  border-radius: 8px;
+  border-radius: 4px;
   cursor: pointer;
   transition: all 0.15s ease;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  box-sizing: border-box;
 }
 
 .klotski-block:hover {
@@ -104,17 +112,7 @@
 
 /* Mobile responsive */
 @media (max-width: 400px) {
-  .klotski-board {
-    width: 200px;
-    height: 250px;
-  }
-
-  .klotski-cell {
-    width: 50px;
-    height: 50px;
-  }
-
-  .klotski-block {
-    /* Positions and sizes need to scale - handled in JS via style prop */
+  .klotski-container {
+    --cell-size: 50px;
   }
 }

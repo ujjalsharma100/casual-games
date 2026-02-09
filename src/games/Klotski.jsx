@@ -1,4 +1,4 @@
-import { useState, useCallback } from 'react'
+import { useState, useCallback, useEffect } from 'react'
 import './Klotski.css'
 
 // Classic Klotski puzzle - move the big red block to the bottom center exit
@@ -24,6 +24,18 @@ export default function Klotski({ onBack }) {
   const [selectedBlock, setSelectedBlock] = useState(null)
   const [moves, setMoves] = useState(0)
   const [won, setWon] = useState(false)
+  const [cellSize, setCellSize] = useState(window.innerWidth <= 400 ? 50 : 60)
+  const gap = 4
+  const padding = 4
+
+  useEffect(() => {
+    const handleResize = () => {
+      setCellSize(window.innerWidth <= 400 ? 50 : 60)
+    }
+
+    window.addEventListener('resize', handleResize)
+    return () => window.removeEventListener('resize', handleResize)
+  }, [])
 
   const getOccupiedCells = useCallback((blockList, excludeId = null) => {
     const cells = new Set()
@@ -99,12 +111,17 @@ export default function Klotski({ onBack }) {
     const block = blocks.find(b => b.id === selectedBlock.id)
     if (!block) return
 
-    // Determine direction to move
+    // Determine direction to move - only allow horizontal OR vertical, not diagonal
     const dr = Math.sign(row - block.row)
     const dc = Math.sign(col - block.col)
 
-    if (dr !== 0 || dc !== 0) {
-      moveBlock(block, dr, dc)
+    // Only move if it's purely horizontal or purely vertical (not both)
+    if (dr !== 0 && dc === 0) {
+      // Vertical movement only
+      moveBlock(block, dr, 0)
+    } else if (dc !== 0 && dr === 0) {
+      // Horizontal movement only
+      moveBlock(block, 0, dc)
     }
   }
 
@@ -157,10 +174,10 @@ export default function Klotski({ onBack }) {
               key={block.id}
               className={`klotski-block type-${block.type} ${block.isMain ? 'main' : ''} ${selectedBlock?.id === block.id ? 'selected' : ''}`}
               style={{
-                top: `${block.row * 60 + 5}px`,
-                left: `${block.col * 60 + 5}px`,
-                width: `${block.width * 60 - 10}px`,
-                height: `${block.height * 60 - 10}px`
+                top: `${padding + block.row * (cellSize + gap)}px`,
+                left: `${padding + block.col * (cellSize + gap)}px`,
+                width: `${block.width * cellSize + (block.width - 1) * gap}px`,
+                height: `${block.height * cellSize + (block.height - 1) * gap}px`
               }}
               onClick={() => handleBlockClick(block)}
             />
